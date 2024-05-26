@@ -21,7 +21,7 @@ public class ProtectVillagerAlert implements Listener {
 
     @EventHandler
     public void onEntityTarget(EntityTargetEvent event) {
-        if (event.getTarget() instanceof Villager villager) {
+        if (event.getTarget() instanceof Villager villager && !event.getEntity().getName().contains("Puten")) {
             Location location = villager.getLocation();
             getServer().broadcastMessage(ChatColor.RED + "Villager "+ villager.getName() + " needs help! "+ event.getEntity() + " is attacking. Coords " + location.getBlockX() + " " + location.getBlockY() + " " + location.getBlockZ());
         }
