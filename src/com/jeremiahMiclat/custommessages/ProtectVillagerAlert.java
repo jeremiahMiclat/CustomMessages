@@ -23,7 +23,7 @@ public class ProtectVillagerAlert implements Listener {
     public void onEntityTarget(EntityTargetEvent event) {
         if (event.getTarget() instanceof Villager villager && !event.getEntity().getName().contains("Puten")) {
             Location location = villager.getLocation();
-            getServer().broadcastMessage(ChatColor.RED + "Villager "+ villager.getName() + " needs help! "+ event.getEntity() + " is attacking. Coords " + location.getBlockX() + " " + location.getBlockY() + " " + location.getBlockZ());
+            getServer().broadcastMessage(ChatColor.DARK_BLUE + "Villager "+ villager.getName() + " needs help. "+ event.getEntity().getName() + " might attack. Coords " + location.getBlockX() + " " + location.getBlockY() + " " + location.getBlockZ());
         }
     }
 
@@ -36,7 +36,7 @@ public class ProtectVillagerAlert implements Listener {
                 getServer().broadcastMessage( ChatColor.LIGHT_PURPLE + "LOL " + entity.getName());
             }
             else {
-                getServer().broadcastMessage(ChatColor.RED + "Villager "+ villager.getName() + " needs help! "+ entity.getName() + " attacked. Coords " + location.getBlockX() + " " + location.getBlockY() + " " + location.getBlockZ());
+                getServer().broadcastMessage(ChatColor.RED + "Villager "+ villager.getName() + " was hit! "+ entity.getName() + " dealt damage. Coords " + location.getBlockX() + " " + location.getBlockY() + " " + location.getBlockZ());
             }
         }
     }
@@ -53,7 +53,7 @@ public class ProtectVillagerAlert implements Listener {
                     String weaponName = weapon.hasItemMeta() && Objects.requireNonNull(weapon.getItemMeta()).hasDisplayName() ? weapon.getItemMeta().getDisplayName() : weapon.getType().toString();
                     getServer().broadcastMessage(ChatColor.LIGHT_PURPLE+player.getName() + " killed a villager with " + weaponName + "!");
                 } else {
-                    getServer().broadcastMessage(ChatColor.RED+"A villager was killed by " + damager.getType().toString());
+                    getServer().broadcastMessage(ChatColor.RED+"A villager was killed by " + damager.getName());
                 }
 
             }
